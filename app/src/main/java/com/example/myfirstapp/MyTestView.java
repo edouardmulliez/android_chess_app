@@ -1,6 +1,7 @@
 package com.example.myfirstapp;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,6 +10,14 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.myfirstapp.Chess.ChessColor;
+import com.example.myfirstapp.Chess.ChessPiece;
+import com.example.myfirstapp.Chess.PieceType;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * TODO: document your custom view class.
@@ -19,24 +28,26 @@ public class MyTestView extends View {
     private float mExampleDimension = 0; // TODO: use a default from R.dimen...
     private Drawable mExampleDrawable;
 
+    private Map<String, Drawable> chessDrawables;
+
     private Paint mPaint;
 
     public MyTestView(Context context) {
         super(context);
-        init(null, 0);
+        init(context,null, 0);
     }
 
     public MyTestView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs, 0);
+        init(context, attrs, 0);
     }
 
     public MyTestView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(attrs, defStyle);
+        init(context, attrs, defStyle);
     }
 
-    private void init(AttributeSet attrs, int defStyle) {
+    private void init(Context context, AttributeSet attrs, int defStyle) {
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.MyTestView, defStyle, 0);
@@ -61,6 +72,24 @@ public class MyTestView extends View {
         a.recycle();
 
         mPaint = new Paint();
+        initChessDrawables(context);
+
+
+    }
+
+    private void initChessDrawables(Context context){
+        Resources resources = context.getResources();
+        List<ChessPiece> pieces = ChessPiece.getPieces();
+        int resourceId;
+        String resourceName;
+        chessDrawables = new HashMap<>();
+        for (ChessPiece piece: pieces){
+            resourceName = "chess_" + piece.getCode().toLowerCase();
+            resourceId = getResources()
+                    .getIdentifier(resourceName, "drawable", context.getPackageName());
+            chessDrawables.put(piece.getCode(), resources.getDrawable(resourceId));
+        }
+
     }
 
     @Override
@@ -80,7 +109,6 @@ public class MyTestView extends View {
 
         int contentWidth = getWidth() - paddingLeft - paddingRight;
         int contentHeight = getHeight() - paddingTop - paddingBottom;
-
 
         int nRow = 8;
 
@@ -104,8 +132,6 @@ public class MyTestView extends View {
             }
         }
 
-
-
         // Border around the board
         mPaint.setStyle(Paint.Style.STROKE);
         canvas.drawRect(
@@ -115,5 +141,16 @@ public class MyTestView extends View {
                 paddingTop + contentHeight,
                 mPaint
         );
+
+
+        // Drawable d = getResources().getDrawable(R.drawable.chess_bb, null);
+        ChessPiece piece = new ChessPiece(PieceType.QUEEN, ChessColor.BLACK);
+        Drawable d = chessDrawables.get(piece.getCode());
+        d.setBounds(
+                paddingLeft,
+                paddingTop,
+                paddingLeft + contentWidth / nRow,
+                paddingTop + contentHeight / nRow);
+        d.draw(canvas);
     }
 }

@@ -5,15 +5,16 @@
         android:layout_height="match_parent">
 
     <com.example.myfirstapp.MyTestView
-            android:background="#ccc"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:paddingLeft="20dp"
-            android:paddingBottom="40dp"
-            app:exampleDimension="24sp"
-            app:exampleColor="#33b5e5"
-            app:exampleString="Hello, MyTestView"
-            app:exampleDrawable="@android:drawable/ic_menu_add" android:layout_marginBottom="0dp"
-            android:paddingRight="20dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:background="#ccc"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="40dp"
+        app:exampleColor="#33b5e5"
+        app:exampleDimension="24sp"
+        app:exampleDrawable="@android:drawable/ic_menu_add"
+        app:exampleString="Hello, MyTestView" />
 
 </FrameLayout>
