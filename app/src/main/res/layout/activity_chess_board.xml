@@ -12,14 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/button_send"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.chessclientapp.BoardView
+    <com.chess.chessclientapp.BoardView
+        android:id="@+id/boardView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

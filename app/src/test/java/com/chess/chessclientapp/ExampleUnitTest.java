@@ -1,4 +1,4 @@
-package com.example.chessclientapp;
+package com.chess.chessclientapp;
 
 import org.junit.Test;
 

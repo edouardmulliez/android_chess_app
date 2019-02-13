@@ -1,4 +1,4 @@
-package com.example.chessclientapp.helper;
+package com.chess.chessclientapp.helper;
 
 import java.util.HashMap;
 import java.util.Map;

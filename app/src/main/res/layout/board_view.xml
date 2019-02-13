@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.example.chessclientapp.BoardView
+    <com.chess.chessclientapp.BoardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ccc" />

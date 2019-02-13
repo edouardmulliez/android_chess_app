@@ -2,4 +2,7 @@
     <string name="app_name">My First App</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="dialog_no_internet">Connection error</string>
+    <string name="dialog_no_internet_details">Check your internet connection and try again.</string>
+    <string name="try_again">Try again</string>
 </resources>

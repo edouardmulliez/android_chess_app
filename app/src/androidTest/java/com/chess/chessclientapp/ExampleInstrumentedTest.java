@@ -1,4 +1,4 @@
-package com.example.chessclientapp;
+package com.chess.chessclientapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
